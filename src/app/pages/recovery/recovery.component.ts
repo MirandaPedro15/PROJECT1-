@@ -11,6 +11,7 @@ export class RecoveryComponent {
   goToLogin(){
   this.router.navigate(['login'])
   }
+  CorreoRecuperacion: string ='';
 
 
 }

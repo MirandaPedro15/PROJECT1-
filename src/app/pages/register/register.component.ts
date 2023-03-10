@@ -9,6 +9,13 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   constructor(public router: Router){}
+    //VARIABLES//
+    NuevoEmail:string='';
+    Nuevopassword: string ='';
+    login(){
+      console.log(this.NuevoEmail)
+      console.log(this.Nuevopassword)
+    }
 
   goToLogin(){
     this.router.navigate(['login']);

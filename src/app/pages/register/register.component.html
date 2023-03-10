@@ -1,2 +1,17 @@
-<p>register works!</p>
-<button (click)="goToLogin()">ir a login</button>
+<div class="row">
+  <div class="col-8 partImg">
+<!-- <img id="imagen" src="../../../assets/logo/logo.png" alt="">
+ -->  </div>
+ <div id="datos" class=" col-4">
+   <div id="data">
+     <h2>REGISTRO DE USUARIO</h2>
+     <div  id="contenedor">
+       <input id="dni" style="background-color: #E9E8E8;" class="form-control" [(ngModel)]="NuevoEmail" type="email" maxlength="8" placeholder="nuevo usuario"> <br>
+       <input id="contra" style="background-color: #E9E8E8;" class="form-control" [(ngModel)]="Nuevopassword" type="password" placeholder="contraseña">
+       <br>
+       <button id="validacion">VALIDAR USUARIO</button>
+       <br><br>
+       <button id="regreso" (click)="goToLogin()"> Regresar </button>
+ </div>
+</div>
+</div>

@@ -1,2 +1,14 @@
-<p>recovery works!</p>
-<button (click)="goToLogin()">REGRESAR</button>
+<div class="row">
+  <div class="col-8 partImg" >
+    <!-- <img id="imagen" src="../../../assets/logo/logo.png" alt=""> -->
+       </div>
+<div id="datos" class=" col-4">
+  <h5>¿OLVIDASTE TU CONTRASEÑA?</h5>
+  <h6>A continuación ingresa tu correo eléctrónico para poder enviarte un código de recuperación</h6>
+  <input id="recuperarCorreo" style="background-color: #E9E8E8;" class="form-control" [(ngModel)]="CorreoRecuperacion" type="text" placeholder="CORREO RECUPERACION">
+ <br>
+ <button id="enviar">ENVIAR</button>
+ <br> <br>
+<button id="regresar" (click)="goToLogin()">REGRESAR</button>
+</div>
+</div>

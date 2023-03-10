@@ -1,0 +1,34 @@
+::placeholder{
+  font-size: small;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+}
+.partImg{
+  display: block;
+  background: url(../../../assets/logo/logo.png) ;
+  background-size: cover;
+  height: 100vh;
+}
+#imagen{
+  width: 1000px;
+  height: 950px;
+}
+h2{
+text-align: center;
+}
+#validacion{
+border: 0cm;
+  height: 50px;
+  width: 100%;
+  background-color: royalblue;
+  color: white;
+}
+#data{
+  margin-top: 200px;
+}
+#regreso{
+  border: 0cm;
+  background-color: white;
+  text-transform: uppercase;
+  color: royalblue;
+}

@@ -1,0 +1,368 @@
+::placeholder{
+  font-size: x-small;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+  zoom: 60%;
+}
+input{
+  height: 35px;
+  border-radius: 5px;
+}
+p{
+  text-align: left;
+  font-size: x-small;
+}
+div.row-12.Contenido{
+  background-size: cover;
+  display: -moz-box;
+  background-color: #EFEEEE ;
+  height: 950px;
+  width: 1520px;
+
+}
+div.row{
+  margin: 10px;
+  width:1500px
+}
+div.row.HorarioCitas{
+  text-align: center;
+  margin-top: 50px;
+  height: 350px;
+
+}
+div#cuadros{
+  width: 180px;
+  height: 25px;
+  background-color: #fff;
+}
+.scroll{
+  overflow-y: scroll ;
+  overflow-x: hidden;
+  height: 300px;
+}
+td#headUsuario{
+  width: 250px;
+  color: #577F8E;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+td#head{
+  width: 80px;
+  color: #577F8E;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+a#DatosHeader{
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #000;
+}
+p#mesyaño{
+  text-align: center;
+  font-size:small;
+  color: #577F8E;
+  font-weight: 600;
+}
+thead{
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: small;
+  color: #577F8E;
+}
+td#diaActual{
+  background-color: #577F8E;
+  color: #fff;
+  text-transform: capitalize;
+  border-radius: 20px;
+}
+span#dias{
+  font-weight: 400;
+  text-transform: capitalize;
+}
+button#cita1{
+  margin: 5px;
+  background-color: #fff;
+  width: 140px;
+  color: gray;
+  height: 50PX;
+  font-weight: bold;
+}
+td{
+  height: 83px;
+  width: 40px;
+  margin: 5px;
+  font-size: larger;
+}
+div.col-1{
+  text-align: center;
+  font-weight: bolder;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  width: 160px;
+  margin: 1px;
+  text-transform: uppercase;
+}
+div.col-2{
+  margin: 5px;
+  background-color: #fff;
+  width: 160px;
+  color: gray;
+  height: 60PX;
+  font-weight: bold;
+}
+div.col-9{
+  background-color: white;
+  margin-top: 10px;
+  width: 1150px;
+  font-weight: 400;
+  margin-left: 15px;
+  height: 90px;
+}
+div.col-3{
+  background-color: #fff;
+  width: 300px;
+  margin-left: 20px;
+  margin-top: 10px;
+  font-weight: 400;
+    height: 90px;
+}
+div#fechas.row{
+  margin-top: 20px;
+}
+small#estado{
+  font-weight: 400;
+  text-transform:capitalize ;
+  font-size: small;
+}
+td#estadoCita{
+  width: 120px;
+}
+td#DiasCalendario:hover {
+  background-color:dodgerblue;
+  color: #fff;
+  border-radius: 20px;
+}
+button#botonesCalendario{
+  border-radius: 10px;
+  border-color: #577F8E;
+  color: #577F8E;
+  background-color: #fff;
+  height: 40px;
+  border: 5 solid;
+}
+button#botonesCalendario:hover {
+  background: #577F8E;
+  color: #fff;
+}
+button#coloresCita1{
+  width: 70px;
+  height: 30px;
+  border: 0cm;
+  background-color:#32DCB5;
+  border-radius: 10cm;
+}
+button#coloresCita2{
+  width: 70px;
+  height: 30px;
+  border: 0cm;
+  background-color: #FFB200;
+  border-radius: 10cm;
+}
+button#coloresCita3{
+  width: 70px;
+  height: 30px;
+  border: 0cm;
+  background-color: #FF5B5B;
+  border-radius: 10cm;
+}
+button#coloresCita4{
+  width: 70px;
+  height: 30px;
+  border: 0cm;
+  background-color:#577F8E;
+  border-radius: 10cm;
+}
+#salaclass{
+  margin-right: 10px;
+}
+#calendar{
+  background-color: #fff;
+  margin: 20px;
+  width: 1500px;
+  height: 700px;
+}
+#datosPaciente{
+  background-color: #fff;
+  margin: 10px;
+}
+#calendario{
+ background-color: #fff;
+ margin: 10px;
+}
+#citas{
+  background-color: #fff;
+  margin: 10px;
+  font-size: xx-small;
+}
+.small{
+  margin: 5px;
+}
+#flecha{
+  background-color: #fff;
+  border: 0cm;
+  width: 50px;
+  height: 2px;
+  position:static;
+  font-size: medium;
+  font-weight: bold;
+}
+#encabezado{
+  text-align: center;
+  height: 80px;
+  margin: 10px;
+  font-weight: bold;
+  margin-top: 0px;
+  border: 10px;
+}
+#fechas{
+  text-align: center;
+  height: 70px;
+  margin: 10px;
+  font-weight: bold;
+}
+#salas{
+  height:30px;
+  width: 80px;
+  text-align: center;
+  font-weight: bold ;
+}
+#infoGeneral{
+  background-color: #fff;
+  width: 740px;
+  height: 330px;
+  margin-left: 10px;
+}
+#Preferencias{
+  background-color: #fff;
+  width: 720px;
+  margin-left: 10px;
+  height: 330px;
+}
+div.row.PiedePagina{
+  width: 1520px;
+}
+#datosPaciente{
+  font-size: small;
+}
+button{
+  border:solid 1px;
+  border-style: groove;
+  margin: 10px;
+  width: 120px;
+}
+#NombrePaciente{
+  width: 390px;
+}
+#EdadPaciente{
+  width: 70px;
+  margin: 10px;
+}
+#CamaPaciente{
+  width: 100px;
+  margin:10px;
+}
+#PesoPaciente{
+  width:80px;
+  margin: 10px;
+}
+#CIE{
+  width: 80px;
+}
+#Diagnóstico{
+  width: 300px;
+  margin: 10px;
+}
+#codInt{
+  width: 80px;
+}
+#Intervencion{
+  margin: 10px;
+  width: 300px;
+}
+#InicioCita{
+  width: 100px;
+}
+#FinCita{
+  width: 100px;
+}
+#CodCirujano{
+  width: 80px;
+}
+#NombreCirujano{
+  width: 300px;
+  margin: 10px;
+}
+#CodigoOA{
+  width: 120px;
+  margin: 10px;
+}
+#Anestesia{
+  width: 120px;
+  margin: 10px;
+}
+#CodAnestesiologo{
+  width: 80px;
+}
+#Anestesiologo{
+  width: 300px;
+  margin: 5px;
+}
+#BotonCancelar{
+  border: 0cm;
+  color: royalblue;
+  font-weight: bold;
+  background-color: #fff;
+  height: 50px;
+  width: 140px;
+  margin: 5px;
+}
+#SolicitarSala{
+  border: 0cm;
+  background-color: royalblue;
+  color: white;
+  font-weight: bold;
+  height: 50px;
+  width: 160px;
+  margin: 5px;
+}
+#Petitorio{
+  width: 600px;
+  height: 50px;
+  background-color: #577F8E;
+  color: #fff;
+  margin: 5px;
+  text-align: left;
+}
+#AgregarPeti{
+  width:   600px;
+  height: 50px;
+  margin: 5px;
+  border-style: dashed;
+}
+#redondo1{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-left: 5px;
+  background-color:#577F8E;
+  color: #fff;
+  border: 0cm;
+}
+#siguiente{
+  border: 0cm;
+  width: 0px;
+  height: 0px;
+  background-color: #EFEEEE;
+  margin: -10px;
+  margin-left: 10px;
+}

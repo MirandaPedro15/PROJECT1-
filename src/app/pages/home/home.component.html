@@ -1,2 +1,111 @@
-<p>home works!</p>
-<button (click)="goToLogin()"> Regresar </button>
+<div class="row-12 Contenido">
+<div id="encabezado" class="row">
+  <div class="col" id="datosPaciente">
+  <table>
+    <thead>
+      <td id="head">Sis: <a id="DatosHeader">HCE-A23SYS</a></td>
+      <td id="headUsuario">Usuario <a id="DatosHeader"></a></td>
+      <td id="head">Sucursal <a id="DatosHeader"></a></td>
+      <td id="head">Unidad <a id="DatosHeader"></a></td>
+    </thead>
+  </table>
+  </div>
+  <div class="col" id="calendario">
+    <small id="calendarioBotones" style="float: left; font-size: small; font-weight: 500; margin-top: 4px;">Mostrar Calendario</small><br>
+    <button id="botonesCalendario">Mensual</button>
+    <button id="botonesCalendario">Semanal</button>
+    <button id="botonesCalendario">Diario</button>
+    </div>
+  <div class="col" id="citas">
+   <table>
+    <thead>
+      <td id="estadoCita"><button id="coloresCita1"></button><small id="estado">Confirmado</small></td>
+      <td id="estadoCita"><button id="coloresCita2"></button><small id="estado">Pendiente</small></td>
+      <td id="estadoCita"><button id="coloresCita3"></button><small id="estado">Rechazado</small></td>
+      <td id="estadoCita"><button id="coloresCita4"></button><small id="estado">Mantemiento</small></td>
+    </thead>
+   </table>
+  </div>
+</div>
+<!-- espacio -->
+ <div id="fechas" class="row">
+  <div class="col-9">
+    <div class="bg-white  text-center d-flex w-100 justify-content-center p-2" >
+      <div class="cssDays" [ngClass]="{'cssPintar':month.day +  month.mes + month.anio==this.viewDay.day + this.viewDay.mes + this.viewDay.anio}" *ngFor="let month of daysMonth" (click)="armarAgenda(month)">
+          <div class="dayNom">
+              <label for="">{{month.name.slice(0,3)}}</label>
+          </div>
+          <div class="dayNum">
+              <span>{{month.value}}</span>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="col-3">
+    <div class="bg-white m-1 justify-content-center p-2 cssMesAnio">
+      <div class="d-flex text-center  align-items-center" style="margin-left: 3px;margin-right: 3px;">
+          <label class="w-25" for="">MES</label>
+          <div class="w-75 text-center d-flex">
+              <button id="flecha" (click)="changeMonth(-1)"> < </button>
+              <span>{{mesView.nom}}</span>
+              <button id="flecha" (click)="changeMonth(+1)"> > </button>
+          </div>
+      </div>
+      <div class="d-flex text-center align-items-center" style="margin-left: 3px;margin-right: 3px;">
+          <label class="w-25" for="">AÑO</label>
+          <div class="w-75 text-center d-flex">
+             <button id="flecha" (click)="changeYear(-1)"> < </button>
+              <span>{{this.anio}}</span>
+             <button id="flecha" (click)="changeYear(+1)"> > </button>
+          </div>
+      </div>
+  </div>
+   </div>
+</div> <br>
+<!-- espacio -->
+<div class="cssAgenda row p-1 m-0 w-100">
+  <div  class="text-center" style="width: 12%;">
+    <label>SALAS</label>
+    <div class="bg-white cssFilas" style="--columns:{{salas.length}};" *ngFor="let sala of salas">
+        <span>{{sala.name}}</span>
+    </div></div>
+  <div  style="width: 12%; text-align: center; padding: 0;" *ngFor="let day of diasAgenda">
+    <label>{{day.name | uppercase}} {{day.value}}</label>
+<div class="bg-white cssFilas" style="--columns:{{salas.lenght}};" *ngFor="let sala of salas" (click)="goSala(sala,day)"></div>
+        <div id="cuadros"></div>
+    </div>
+  </div>
+<!-- espacio -->
+<div class="row PiedePagina" style="margin-top: 30px;">
+  <div class="col-6" id="infoGeneral">
+      <small> Sala: <strong>Sala 1</strong>  </small><br>
+      <input id="NombrePaciente" type="text" placeholder="Paciente">
+      <input id="EdadPaciente" type="number" placeholder="Edad">
+      <input id="CamaPaciente" type="text" placeholder="Cama">
+      <input id="PesoPaciente" type="number" placeholder="Peso"> <br>
+      <input id="CIE" type="text" placeholder="CIE10">
+      <input id="Diagnóstico" type="text"  placeholder="Diagnóstico">
+      <small>Fecha: DD/MM/AÑO</small> <br>
+      <input id="codInt" type="text" placeholder="Cod Int">
+      <input id="Intervencion" type="text" placeholder="Intervencion">
+      <small>Inicio:</small> <input id="InicioCita" type="text" style="margin: 5px;" placeholder="INICIO"> <small style="margin: 5px;">Fin:</small><input id="FinCita" type="text" placeholder="FIN"> <br>
+      <input id="CodCirujano" type="text" placeholder="Cod Cirujano">
+      <input id="NombreCirujano" type="text" placeholder="Cirujano">
+      <input id="CodigoOA" type="text" placeholder="Codigo OA">
+      <input id="Anestesia" type="text" placeholder="Anestesia"> <br>
+      <input id="CodAnestesiologo" type="text" placeholder="Cod Anest.">
+      <input id="Anestesiologo" type="text" placeholder="Anestesiologo">
+      <button id="BotonCancelar"> CANCELAR </button>
+      <button id="SolicitarSala"> SOLICITAR SALA </button>
+    </div>
+  <div class="col-6" id="Preferencias">
+     <span>PETITORIOS</span> <br>
+     <button id="Petitorio"> PETITORIO 1</button> <button id="redondo1">+</button><br>
+     <button id="Petitorio"> PETITORIO 2</button> <button id="redondo1">+</button><br>
+     <button id="Petitorio"> PETITORIO 3</button> <button id="redondo1">+</button>
+     <button id="AgregarPeti"> + AGREGAR PETITORIO </button>
+    </div>
+  <br>
+  <br>
+</div>
+</div>
