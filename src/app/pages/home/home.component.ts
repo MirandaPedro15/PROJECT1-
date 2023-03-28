@@ -30,30 +30,40 @@ export class HomeComponent {
 mesView:any;
 mes:any;
 anio:any;
+day:any;
 actualDay:any;
-diasAgenda:any=[];
+diasAgenda:any
 dayLength:any;
 viewDay:any;
 mostrarForm:boolean=false;
 nombreSala:any;
 nombreDay:any;
 hours:any=[];
-salas: any;
+hour:any=[];
+salas: Salas[]=[];
 viewLateral:any='';
-  salasService: any;
+  cssHora: any;
 
-  constructor (){}
+  constructor (private salasService : SalasService){}
   ngOnInit():void{
     this.mes = new Date().getMonth() +1;
+    console.log('uno')
     this.anio =  new Date().getFullYear()
-    this.actualDay={
-      name: '',
-      value: '',
-      day:new Date().getDate(),
-      indexWeek: '',
-  }
-  this.getMes(this.mes);
-  this.getSalas();
+    console.log('dos')
+    if(this.mes){
+      console.log('tres')
+      this.actualDay={
+        name: '',
+        value: '',
+        day:new Date().getDate(),
+        indexWeek: '',
+    }
+    }
+    this.getMes(this.mes);
+this.getSalas();
+this.getHour();
+this.armarAgenda(this.actualDay);
+this.goSala;
 }
 diasCalendario(month:any,year:any){
   console.log(month,year)
@@ -80,7 +90,35 @@ diasCalendario(month:any,year:any){
     };
   });
   this.daysMonth = arrayDays;
+
 }
+getHour(){
+
+  let tiempo:any;
+  this.hour={
+    hora:'07:00',
+    isSelect:false,
+    ocupado:false
+  }
+  for(var i = 0 ; i < 23; i++){
+    this.hours.push(this.hour)
+
+    tiempo = new Date("2000-01-01T" + this.hour.hora + ":00Z");
+    if (isNaN(tiempo)) {
+      tiempo = new Date("2000-01-01T00:00:00Z");
+    }
+    tiempo.setMinutes(tiempo.getMinutes() + 30);
+    console.log(tiempo)
+    this.hour = {
+      hora:tiempo.toISOString().substr(11, 5),
+      isSelect:false,
+      ocupado:false
+    }
+    console.log(this.hours)
+    console.log(this.hour)
+  }
+}
+
 getSalas(){
   this.salas = this.salasService.getSalas();
   console.log(this.salas)
@@ -96,11 +134,7 @@ getSalas(){
     this.viewDay='';
     console.log(this.mesView.num+value)
     if(this.mesView.num+value == 13){
-      /* this.mesView.num=1
-      this.getMes(this.mesView.num) */
     }else if(this.mesView.num+value == 0){
-      /* this.mesView.num=12;
-      this.getMes(this.mesView.num) */
     }else{
       this.getMes(this.mesView.num+value)
     }
@@ -122,7 +156,6 @@ getSalas(){
       mes:'',
       anioo:''
     }
-    //this.diasAgenda.unshift(salaDesc)
     this.dayLength=this.diasAgenda.length;
   }
   goSala(sala:any,day:any){
@@ -133,5 +166,42 @@ getSalas(){
     this.nombreDay=day.name + ' ' + day.day;
     console.log(this.nombreSala, this.nombreDay)
   }
-}
+  close(){
+    this.mostrarForm=false;
+  }
+  viewHora(value:any,index:any){
+    this.cssHora=value;
+    this.hours.forEach((element:any) => {
+      element.isSelect=false;
+    });
+    this.hours[index].isSelect=true;
+  }
+  ocuparHorario(horario:any){
+    let horaOperacion:any= new Date("2000-01-01T" + '03:00' + ":00Z");
 
+    let tiempoInicio = new Date("2000-01-01T" + horario.hora + ":00Z");
+    console.log(horaOperacion + tiempoInicio)
+
+    let tiempoFin = tiempoInicio.getHours() + horaOperacion.getHours();
+    console.log(horaOperacion.getHours(),tiempoInicio.getHours(),tiempoFin)
+    console.log(tiempoInicio,tiempoInicio.getHours() +5)
+    this.hours.forEach((element:any) => {
+          let temp = new Date("2000-01-01T" + element.hora + ":00Z");
+          //if()
+    });
+  }
+  closeCont(index:any){
+    console.log(index)
+    this.cssHora='';
+    this.hours[index].isSelect=false;
+  }
+  goNewPetitorio(){
+    this.mostrarForm=true;
+    this.viewLateral='NewPetitorio'
+  }
+  goReservas(value:any){
+    this.mostrarForm=true;
+    this.viewLateral=value;
+    console.log(this.viewLateral)
+  }
+}

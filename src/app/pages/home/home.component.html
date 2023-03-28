@@ -4,17 +4,17 @@
   <table>
     <thead>
       <td id="head">Sis: <a id="DatosHeader">HCE-A23SYS</a></td>
-      <td id="headUsuario">Usuario <a id="DatosHeader"></a></td>
+      <td id="headUsuario">Usuario <a id="DatosHeader"> PMIRANDA <br> Miranda Iriarte, Pedro Mathias</a></td>
       <td id="head">Sucursal <a id="DatosHeader"></a></td>
       <td id="head">Unidad <a id="DatosHeader"></a></td>
     </thead>
   </table>
   </div>
   <div class="col" id="calendario">
-    <small id="calendarioBotones" style="float: left; font-size: small; font-weight: 500; margin-top: 4px;">Mostrar Calendario</small><br>
-    <button id="botonesCalendario">Mensual</button>
-    <button id="botonesCalendario">Semanal</button>
-    <button id="botonesCalendario">Diario</button>
+    <small id="calendarioBotones" style="float: left; font-size: small; font-weight: 500; margin-top: 4px;">Mostrar Reservas</small><br>
+    <button id="botonesCalendario" (click)="goReservas('Mis Reservas')" >Mis Reservas</button>
+    <button id="botonesCalendario" (click)="goReservas('Reservas Pasadas')">Pasadas </button>
+    <button id="botonesCalendario" (click)="goReservas('Reservas Pendientes')">Pendientes </button>
     </div>
   <div class="col" id="citas">
    <table>
@@ -65,18 +65,18 @@
 <!-- espacio -->
 <div class="cssAgenda row p-1 m-0 w-100">
   <div  class="text-center" style="width: 12%;">
-    <label>SALAS</label>
+    <label style="font-weight: bold; color: #577f8e;">SALAS</label>
     <div class="bg-white cssFilas" style="--columns:{{salas.length}};" *ngFor="let sala of salas">
-        <span>{{sala.name}}</span>
-    </div></div>
+        <span id="salas">{{sala.name}}</span>
+     </div></div>
   <div  style="width: 12%; text-align: center; padding: 0;" *ngFor="let day of diasAgenda">
-    <label>{{day.name | uppercase}} {{day.value}}</label>
-<div class="bg-white cssFilas" style="--columns:{{salas.lenght}};" *ngFor="let sala of salas" (click)="goSala(sala,day)"></div>
-        <div id="cuadros"></div>
+    <label id="diasMes">{{day.name | uppercase}} {{day.value}}</label>
+<div class="bg-white cssFilas" style="--columns:{{salas.length}};" *ngFor="let sala of salas" (click)="goSala(sala,day)"></div>
     </div>
   </div>
 <!-- espacio -->
 <div class="row PiedePagina" style="margin-top: 30px;">
+ <label class="subtitle">Información General</label>
   <div class="col-6" id="infoGeneral">
       <small> Sala: <strong>Sala 1</strong>  </small><br>
       <input id="NombrePaciente" type="text" placeholder="Paciente">
@@ -103,9 +103,76 @@
      <button id="Petitorio"> PETITORIO 1</button> <button id="redondo1">+</button><br>
      <button id="Petitorio"> PETITORIO 2</button> <button id="redondo1">+</button><br>
      <button id="Petitorio"> PETITORIO 3</button> <button id="redondo1">+</button>
-     <button id="AgregarPeti"> + AGREGAR PETITORIO </button>
+     <button id="AgregarPeti" (click)="goNewPetitorio()" > + AGREGAR PETITORIO </button>
     </div>
   <br>
   <br>
 </div>
+</div>
+ <!-- FORMULARIO LATERAL -->
+ <div class="formLateral">
+  <div class="sidebarTransparente"  *ngIf="mostrarForm"></div>
+  <div class="sidebar"  *ngIf="mostrarForm">
+      <div *ngIf="viewLateral=='Sala'">
+          <div class="headerForm">
+              <i class="bi bi-x-lg" (click)="close()">X</i>
+              <div class="tituloForm">
+                  <label>{{this.nombreSala}}</label><br>
+                  <span>{{this.nombreDay}}</span>
+              </div>
+          </div>
+          <div class="container">
+              <div class="d-flex w-100 lstHorario" *ngFor="let horario of hours; let index=index" [ngClass]="{'openContainer':horario.isSelect==true}" >
+                  <label for="">{{horario.hora}}</label>
+                  <div class="card cardHorario"  *ngIf="horario.isSelect==false" (click)="viewHora(horario,index)">
+                  </div>
+                  <div class="card cardHorario" *ngIf="horario.isSelect==true">
+                      <label class="w-100" (click)="ocuparHorario(horario)">Seleccionar Especialidad</label>
+                      <i  class="bi bi-chevron-up" (click)="closeCont(index)"></i>
+                  </div>
+                  <div class="card cardHorario" *ngIf="horario.isSelect==false && horario.ocupado==true">
+                    <div class=""></div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div *ngIf="viewLateral=='NewPetitorio'">
+          <div class="headerForm">
+              <i id="cerrar" class="bi bi-x-lg" (click)="close()">X</i>
+              <div class="tituloForm">
+                  <label style="font-size: large!important; padding: 3%;">AGREGAR PETITORIO</label><br>
+                  <span></span>
+              </div>
+          </div>
+          <div class="container p-4">
+              <div class="form-floating mb-2 w-100">
+                  <input type="text" class="form-control" id="floatingInput" >
+                  <label for="floatingInput">NOMBRE PETITORIO</label>
+              </div>
+              <div class="form-floating mb-2 w-100">
+                  <input type="text" class="form-control" id="floatingInput" >
+                  <label for="floatingInput">COMPUESTO</label>
+              </div>
+              <div class="mb-2 mt-4 w-100 addPetitorio">
+                  <button class="btn btn-primary " type="button">Agregar</button>
+              </div>
+          </div>
+      </div>
+      <div *ngIf="viewLateral=='Mis Reservas' || viewLateral=='Reservas Pasadas' || viewLateral=='Reservas Pendientes'">
+          <div class="headerForm">
+              <i id="cerrar" class="bi bi-x-lg" (click)="close()">X</i>
+              <div class="tituloForm">
+                  <label style="font-size: large!important; padding: 3%;">{{viewLateral}}</label><br>
+                  <span></span>
+              </div>
+          </div>
+          <div class="container p-4">
+              <div class="form-floating mb-1 w-100">
+                  <input type="text" class="form-control" id="floatingInput" >
+                  <label for="floatingInput">Reservas</label>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>

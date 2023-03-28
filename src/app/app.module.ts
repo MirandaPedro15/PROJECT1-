@@ -8,6 +8,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+HttpClient
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { RecoveryComponent } from './pages/recovery/recovery.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
+
 
   ],
   providers: [],
